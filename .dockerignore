@@ -1,0 +1,23 @@
+# Maven build output
+target/
+
+# Git
+.git/
+.gitignore
+
+# IDE specific
+.idea/
+.vscode/
+*.iml
+
+# Logs & temporary files
+logs/
+*.log
+tmp/
+*.tmp
+
+# OS junk
+.DS_Store
+
+# Node (if any UI folder exists)
+node_modules/
