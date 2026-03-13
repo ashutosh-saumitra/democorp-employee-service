@@ -31,6 +31,6 @@ USER spring:spring
 WORKDIR /app
 COPY --from=build /workspace/app.jar /app/app.jar
 
-EXPOSE 8080
+EXPOSE 4040
 
 ENTRYPOINT ["sh", "-c", "java -jar /app/app.jar"]
