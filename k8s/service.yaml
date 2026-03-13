@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: democorp-employee-service
+  namespace: democorp
+spec:
+  selector:
+    app: democorp-employee-service
+  ports:
+    - name: http
+      port: 80
+      targetPort: 4040
+      protocol: TCP
+  type: ClusterIP

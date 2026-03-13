@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: democorp-employee-service
+  namespace: democorp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: democorp-employee-service
+  template:
+    metadata:
+      labels:
+        app: democorp-employee-service
+    spec:
+      containers:
+        - name: democorp-employee-service
+          image: democorp-employee-service:latest
+          imagePullPolicy: Never          # IMPORTANT FOR MINIKUBE
+          ports:
+            - containerPort: 4040
+          startupProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 4040
+            periodSeconds: 5
+            failureThreshold: 60
+            timeoutSeconds: 5
+
+          readinessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 4040
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            failureThreshold: 6
+            timeoutSeconds: 5
